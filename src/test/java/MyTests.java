@@ -112,7 +112,7 @@ public class MyTests {
 
     @Test
     public void testCountVowels() {
-        assertEquals(3, stringsPractice.countVowels("hello"));
+        assertEquals(2, stringsPractice.countVowels("hello"));
         assertEquals(5, stringsPractice.countVowels("aeiou"));
         assertEquals(0, stringsPractice.countVowels("xyz"));
         assertEquals(2, stringsPractice.countVowels("HELLO"));
