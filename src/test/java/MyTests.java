@@ -2,93 +2,204 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyTests {
-    
+
+    private final OperatorsPractice operatorsPractice = new OperatorsPractice();
+    private final MathPractice mathPractice = new MathPractice();
+    private final LoopsPractice loopsPractice = new LoopsPractice();
+    private final StringsPractice stringsPractice = new StringsPractice();
+    private final BinaryPractice binaryPractice = new BinaryPractice();
+    private final ArraysPractice arraysPractice = new ArraysPractice();
+
     @Test
-    public void testDivisibleByFour() {
-        // Test cases for numbers divisible by 4
-        assertTrue(MyMain.divisibleByFour(4), "4 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(8), "8 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(12), "12 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(16), "16 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(128), "128 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(0), "0 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(-4), "-4 should be divisible by 4");
-        assertTrue(MyMain.divisibleByFour(-12), "-12 should be divisible by 4");
-        
-        // Test cases for numbers NOT divisible by 4
-        assertFalse(MyMain.divisibleByFour(1), "1 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(3), "3 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(5), "5 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(14), "14 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(26), "26 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(-1), "-1 should not be divisible by 4");
-        assertFalse(MyMain.divisibleByFour(-7), "-7 should not be divisible by 4");
+    public void testIsEven() {
+        assertTrue(operatorsPractice.isEven(4));
+        assertTrue(operatorsPractice.isEven(0));
+        assertFalse(operatorsPractice.isEven(3));
+        assertFalse(operatorsPractice.isEven(7));
     }
 
     @Test
-    public void testSumDigits() {
-        // Basic test cases
-        assertEquals(7, MyMain.sumDigits(61), "sumDigits(61) should return 7");
-        assertEquals(6, MyMain.sumDigits(123), "sumDigits(123) should return 6");
-        assertEquals(19, MyMain.sumDigits(4096), "sumDigits(4096) should return 19");
-        
-        // Single digit numbers
-        assertEquals(0, MyMain.sumDigits(0), "sumDigits(0) should return 0");
-        assertEquals(1, MyMain.sumDigits(1), "sumDigits(1) should return 1");
-        assertEquals(9, MyMain.sumDigits(9), "sumDigits(9) should return 9");
-        
-        // Two digit numbers
-        assertEquals(9, MyMain.sumDigits(45), "sumDigits(45) should return 9");
-        assertEquals(10, MyMain.sumDigits(55), "sumDigits(55) should return 10");
-        
-        // Numbers with zeros
-        assertEquals(1, MyMain.sumDigits(100), "sumDigits(100) should return 1");
-        assertEquals(3, MyMain.sumDigits(102), "sumDigits(102) should return 3");
-        assertEquals(5, MyMain.sumDigits(203), "sumDigits(203) should return 5");
-        
-        // Larger numbers
-        assertEquals(45, MyMain.sumDigits(123456789), "sumDigits(123456789) should return 45");
-        assertEquals(27, MyMain.sumDigits(999), "sumDigits(999) should return 27");
+    public void testGetLastDigit() {
+        assertEquals(5, operatorsPractice.getLastDigit(12345));
+        assertEquals(0, operatorsPractice.getLastDigit(100));
+        assertEquals(7, operatorsPractice.getLastDigit(7));
+        assertEquals(9, operatorsPractice.getLastDigit(999));
     }
 
-    // @Test
-    // public void testIsSelfDivisor() {
-    //     // Test cases for self-divisors
-    //     assertTrue(MyMain.isSelfDivisor(128), "128 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(36), "36 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(144), "144 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(1), "1 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(2), "2 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(3), "3 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(4), "4 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(5), "5 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(6), "6 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(7), "7 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(8), "8 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(9), "9 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(12), "12 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(15), "15 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(24), "24 should be a self-divisor");
-    //     assertTrue(MyMain.isSelfDivisor(48), "48 should be a self-divisor");
-        
-    //     // Test cases for NON self-divisors
-    //     assertFalse(MyMain.isSelfDivisor(26), "26 should not be a self-divisor");
-    //     assertFalse(MyMain.isSelfDivisor(4096), "4096 should not be a self-divisor");
-    //     assertFalse(MyMain.isSelfDivisor(13), "13 should not be a self-divisor");
-    //     assertFalse(MyMain.isSelfDivisor(23), "23 should not be a self-divisor");
-    //     assertFalse(MyMain.isSelfDivisor(29), "29 should not be a self-divisor");
-        
-    //     // Numbers containing 0 (should all be false)
-    //     assertFalse(MyMain.isSelfDivisor(10), "10 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(20), "20 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(30), "30 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(100), "100 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(101), "101 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(102), "102 should not be a self-divisor (contains 0)");
-    //     assertFalse(MyMain.isSelfDivisor(1024), "1024 should not be a self-divisor (contains 0)");
-    // }
-    
-    // Note: printNumsUpTo is a void method that prints to console, so we can't easily test it with JUnit
-    // In a real testing scenario, you might want to capture System.out to test the output,
-    // but for educational purposes, the visual verification in main() is sufficient
+    @Test
+    public void testIsInRange() {
+        assertTrue(operatorsPractice.isInRange(5, 1, 10));
+        assertTrue(operatorsPractice.isInRange(1, 1, 10));
+        assertTrue(operatorsPractice.isInRange(10, 1, 10));
+        assertFalse(operatorsPractice.isInRange(0, 1, 10));
+        assertFalse(operatorsPractice.isInRange(11, 1, 10));
+    }
+
+    @Test
+    public void testRollDice() {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < 1000; i++) {
+            int result = mathPractice.rollDice();
+            assertTrue(result >= 1 && result <= 6);
+            min = Math.min(min, result);
+            max = Math.max(max, result);
+        }
+        assertEquals(1, min, "Expected minimum value of 1 to be reached in 1000 trials");
+        assertEquals(6, max, "Expected maximum value of 6 to be reached in 1000 trials");
+    }
+
+    @Test
+    public void testRandomInRange() {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < 1000; i++) {
+            int result = mathPractice.randomInRange(10, 20);
+            assertTrue(result >= 10 && result <= 20);
+            min = Math.min(min, result);
+            max = Math.max(max, result);
+        }
+        assertEquals(10, min, "Expected minimum value of 10 to be reached in 1000 trials");
+        assertEquals(20, max, "Expected maximum value of 20 to be reached in 1000 trials");
+    }
+
+    @Test
+    public void testDistance() {
+        assertEquals(5.0, mathPractice.distance(0, 0, 3, 4), 0.01);
+        assertEquals(0.0, mathPractice.distance(1, 1, 1, 1), 0.01);
+        assertEquals(10.0, mathPractice.distance(0, 0, 6, 8), 0.01);
+    }
+
+    @Test
+    public void testGetWholePart() {
+        assertEquals(5, mathPractice.getWholePart(5.7));
+        assertEquals(0, mathPractice.getWholePart(0.99));
+        assertEquals(123, mathPractice.getWholePart(123.456));
+    }
+
+    @Test
+    public void testCalculateAverage() {
+        assertEquals(5.0, mathPractice.calculateAverage(10, 2), 0.01);
+        assertEquals(3.0, mathPractice.calculateAverage(9, 3), 0.01);
+        assertEquals(2.5, mathPractice.calculateAverage(5, 2), 0.01);
+    }
+
+    @Test
+    public void testSumToN() {
+        assertEquals(15, loopsPractice.sumToN(5));
+        assertEquals(55, loopsPractice.sumToN(10));
+        assertEquals(1, loopsPractice.sumToN(1));
+        assertEquals(0, loopsPractice.sumToN(0));
+    }
+
+    @Test
+    public void testFactorial() {
+        assertEquals(120, loopsPractice.factorial(5));
+        assertEquals(1, loopsPractice.factorial(0));
+        assertEquals(1, loopsPractice.factorial(1));
+        assertEquals(24, loopsPractice.factorial(4));
+    }
+
+    @Test
+    public void testIsPrime() {
+        assertTrue(loopsPractice.isPrime(2));
+        assertTrue(loopsPractice.isPrime(3));
+        assertTrue(loopsPractice.isPrime(11));
+        assertFalse(loopsPractice.isPrime(1));
+        assertFalse(loopsPractice.isPrime(4));
+        assertFalse(loopsPractice.isPrime(9));
+    }
+
+    @Test
+    public void testCountVowels() {
+        assertEquals(3, stringsPractice.countVowels("hello"));
+        assertEquals(5, stringsPractice.countVowels("aeiou"));
+        assertEquals(0, stringsPractice.countVowels("xyz"));
+        assertEquals(2, stringsPractice.countVowels("HELLO"));
+    }
+
+    @Test
+    public void testAreStringsEqual() {
+        assertTrue(stringsPractice.areStringsEqual("hello", "hello"));
+        assertFalse(stringsPractice.areStringsEqual("hello", "world"));
+        assertTrue(stringsPractice.areStringsEqual("", ""));
+    }
+
+    @Test
+    public void testIsUppercase() {
+        assertTrue(stringsPractice.isUppercase('A'));
+        assertTrue(stringsPractice.isUppercase('Z'));
+        assertFalse(stringsPractice.isUppercase('a'));
+        assertFalse(stringsPractice.isUppercase('1'));
+    }
+
+    @Test
+    public void testGetAlphabetPosition() {
+        assertEquals(1, stringsPractice.getAlphabetPosition('A'));
+        assertEquals(26, stringsPractice.getAlphabetPosition('Z'));
+        assertEquals(1, stringsPractice.getAlphabetPosition('a'));
+        assertEquals(26, stringsPractice.getAlphabetPosition('z'));
+    }
+
+    @Test
+    public void testDecimalToBinary() {
+        assertEquals("101", binaryPractice.decimalToBinary(5));
+        assertEquals("1010", binaryPractice.decimalToBinary(10));
+        assertEquals("0", binaryPractice.decimalToBinary(0));
+        assertEquals("1111", binaryPractice.decimalToBinary(15));
+    }
+
+    @Test
+    public void testBinaryToDecimal() {
+        assertEquals(5, binaryPractice.binaryToDecimal("101"));
+        assertEquals(10, binaryPractice.binaryToDecimal("1010"));
+        assertEquals(0, binaryPractice.binaryToDecimal("0"));
+        assertEquals(15, binaryPractice.binaryToDecimal("1111"));
+    }
+
+    @Test
+    public void testIsPowerOfTwo() {
+        assertTrue(binaryPractice.isPowerOfTwo(1));
+        assertTrue(binaryPractice.isPowerOfTwo(2));
+        assertTrue(binaryPractice.isPowerOfTwo(16));
+        assertFalse(binaryPractice.isPowerOfTwo(3));
+        assertFalse(binaryPractice.isPowerOfTwo(10));
+    }
+
+    @Test
+    public void testCreateSequence() {
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arraysPractice.createSequence(1, 5));
+        assertArrayEquals(new int[]{0, 1, 2}, arraysPractice.createSequence(0, 2));
+        assertArrayEquals(new int[]{5}, arraysPractice.createSequence(5, 5));
+    }
+
+    @Test
+    public void testGetMiddleElement() {
+        assertEquals(3, arraysPractice.getMiddleElement(new int[]{1, 2, 3, 4, 5}));
+        assertEquals(2, arraysPractice.getMiddleElement(new int[]{1, 2, 3}));
+        assertEquals(5, arraysPractice.getMiddleElement(new int[]{5}));
+    }
+
+    @Test
+    public void testFindMax() {
+        assertEquals(5, arraysPractice.findMax(new int[]{1, 2, 3, 4, 5}));
+        assertEquals(10, arraysPractice.findMax(new int[]{10, 2, 5, 3}));
+        assertEquals(7, arraysPractice.findMax(new int[]{7}));
+    }
+
+    @Test
+    public void testReverseArray() {
+        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, arraysPractice.reverseArray(new int[]{1, 2, 3, 4, 5}));
+        assertArrayEquals(new int[]{3, 2, 1}, arraysPractice.reverseArray(new int[]{1, 2, 3}));
+        assertArrayEquals(new int[]{7}, arraysPractice.reverseArray(new int[]{7}));
+    }
+
+    @Test
+    public void testIsSorted() {
+        assertTrue(arraysPractice.isSorted(new int[]{1, 2, 3, 4, 5}));
+        assertTrue(arraysPractice.isSorted(new int[]{1, 1, 2, 3}));
+        assertFalse(arraysPractice.isSorted(new int[]{5, 4, 3, 2, 1}));
+        assertFalse(arraysPractice.isSorted(new int[]{1, 3, 2, 4}));
+        assertTrue(arraysPractice.isSorted(new int[]{5}));
+    }
 }
